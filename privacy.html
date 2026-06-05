@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - SNS Auto Poster</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.7; color: #222; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.8em; }
+    a { color: #0a66c2; }
+    .meta { color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Application: SNS Auto Poster<br />Effective date: June 5, 2026</p>
+
+  <h2>1. Overview</h2>
+  <p>SNS Auto Poster ("the App") is a personal, self-hosted automation tool operated by an individual ("the Operator") for the Operator's own use. This policy explains what data the App accesses and how it is used. The App has no public end users; it operates only on the Operator's own accounts.</p>
+
+  <h2>2. Data the App Accesses</h2>
+  <ul>
+    <li><strong>TikTok:</strong> Using the Content Posting API (scope <code>video.publish</code>), the App publishes the Operator's own video files to the Operator's own TikTok profile. If the Login Kit scope (<code>user.info.basic</code>) is granted, it is used only to identify the Operator's own account during authorization.</li>
+    <li><strong>Google (Sheets / Drive / YouTube):</strong> The App reads a posting schedule from the Operator's own Google Sheet, reads the Operator's own video and thumbnail files from the Operator's own Google Drive, and uploads videos to the Operator's own YouTube channel.</li>
+    <li><strong>Authentication tokens:</strong> OAuth refresh tokens for the connected accounts are stored locally in the Operator's own environment configuration and are used only to authenticate API requests.</li>
+  </ul>
+
+  <h2>3. How Data Is Used</h2>
+  <p>Accessed data is used exclusively to schedule and publish the Operator's own content to the Operator's own social media accounts. The App does not use the data for any other purpose.</p>
+
+  <h2>4. Data Sharing</h2>
+  <p>The App does not sell, share, or transmit any accessed data to third parties. Data is sent only to the official APIs of the relevant platforms (Google, TikTok) for the sole purpose of publishing the Operator's own content.</p>
+
+  <h2>5. Data Storage and Retention</h2>
+  <p>The App runs locally and does not operate a public server or database. Downloaded video files are stored temporarily and deleted after each posting run. Access tokens are retained locally only for as long as needed to operate the App and can be revoked by the Operator at any time through the respective platform's account settings.</p>
+
+  <h2>6. Third-Party Services</h2>
+  <p>The App relies on services provided by Google and TikTok. Their handling of data is governed by their own privacy policies.</p>
+
+  <h2>7. Children's Privacy</h2>
+  <p>The App is a personal tool not directed to children and does not knowingly collect data from children.</p>
+
+  <h2>8. Changes</h2>
+  <p>This Privacy Policy may be updated from time to time. Any updates will be posted on this page.</p>
+
+  <h2>9. Contact</h2>
+  <p>For questions regarding this policy, contact: <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></p>
+
+  <p><a href="./index.html">&larr; Back</a></p>
+</body>
+</html>
