@@ -3,20 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SNS Auto Poster</title>
+  <title>SNS Auto Poster — Scheduled video publishing for creators</title>
+  <meta name="description" content="SNS Auto Poster is a scheduling tool that automatically publishes a creator's own videos to their own social accounts (TikTok, YouTube, Facebook, Instagram) from a Google Sheet schedule." />
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.7; color: #222; }
-    h1 { font-size: 1.6rem; }
-    a { color: #0a66c2; }
-    ul { padding-left: 1.2em; }
+    :root { --brand:#0a66c2; --ink:#1b1f24; --muted:#5b6471; --bg:#ffffff; --soft:#f4f7fb; --line:#e4e9f0; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin:0; color:var(--ink); background:var(--bg); line-height:1.7; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    header.nav { border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(255,255,255,.92); backdrop-filter:saturate(180%) blur(6px); z-index:10; }
+    .nav .wrap { display:flex; align-items:center; justify-content:space-between; height:60px; }
+    .brand { font-weight:700; font-size:1.15rem; letter-spacing:.2px; }
+    .brand span { color:var(--brand); }
+    nav.links a { margin-left:18px; color:var(--ink); font-size:.95rem; }
+    .hero { background:linear-gradient(180deg,var(--soft),#fff); padding:64px 0 48px; border-bottom:1px solid var(--line); }
+    .hero h1 { font-size:2.2rem; line-height:1.25; margin:0 0 14px; }
+    .hero p.lead { font-size:1.15rem; color:var(--muted); max-width:680px; margin:0 0 24px; }
+    .cta { display:inline-block; background:var(--brand); color:#fff; padding:12px 22px; border-radius:8px; font-weight:600; }
+    .cta:hover { text-decoration:none; opacity:.92; }
+    section { padding:52px 0; border-bottom:1px solid var(--line); }
+    section h2 { font-size:1.5rem; margin:0 0 8px; }
+    section p.sub { color:var(--muted); margin:0 0 28px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+    .card { border:1px solid var(--line); border-radius:12px; padding:20px; background:#fff; }
+    .card h3 { margin:0 0 8px; font-size:1.1rem; }
+    .card p { margin:0; color:var(--muted); font-size:.96rem; }
+    ol.steps { counter-reset:s; list-style:none; padding:0; margin:0; display:grid; gap:16px; }
+    ol.steps li { position:relative; padding-left:52px; }
+    ol.steps li::before { counter-increment:s; content:counter(s); position:absolute; left:0; top:0; width:36px; height:36px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; }
+    ol.steps li h3 { margin:4px 0 4px; font-size:1.05rem; }
+    ol.steps li p { margin:0; color:var(--muted); }
+    table.platforms { width:100%; border-collapse:collapse; }
+    table.platforms th, table.platforms td { text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); font-size:.96rem; }
+    table.platforms th { background:var(--soft); }
+    .note { background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:18px 20px; color:var(--muted); font-size:.95rem; }
+    code { background:#eef2f7; padding:1px 6px; border-radius:4px; font-size:.9em; }
+    footer { padding:36px 0; color:var(--muted); font-size:.92rem; }
+    footer .wrap { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; }
+    footer a { margin-right:16px; }
   </style>
 </head>
 <body>
-  <h1>SNS Auto Poster</h1>
-  <p>SNS Auto Poster is a personal automation tool that publishes the owner's own videos to the owner's own social media accounts (e.g. TikTok, YouTube) based on a schedule managed in a private Google Sheet. It has no public end users.</p>
-  <ul>
-    <li><a href="./terms.html">Terms of Service</a></li>
-    <li><a href="./privacy.html">Privacy Policy</a></li>
-  </ul>
+  <header class="nav">
+    <div class="wrap">
+      <div class="brand">SNS&nbsp;<span>Auto&nbsp;Poster</span></div>
+      <nav class="links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Schedule once. Publish everywhere.</h1>
+      <p class="lead">SNS Auto Poster is a scheduling tool that automatically publishes a creator's <strong>own</strong> videos to their <strong>own</strong> social media accounts — TikTok, YouTube, Facebook and Instagram — based on a simple schedule kept in a private Google Sheet.</p>
+      <a class="cta" href="#how">See how it works</a>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Features</h2>
+      <p class="sub">Everything needed to run a consistent posting schedule without manual uploads.</p>
+      <div class="grid">
+        <div class="card"><h3>Spreadsheet-driven</h3><p>Manage every post — video, caption, and publish time — in one private Google Sheet. No dashboard to learn.</p></div>
+        <div class="card"><h3>Scheduled publishing</h3><p>Set a date and time for each video. The tool publishes it at the right moment, then records the resulting post URL back to the sheet.</p></div>
+        <div class="card"><h3>Multi-platform</h3><p>Publish the same short video to TikTok, YouTube Shorts, Facebook Reels and Instagram Reels from a single schedule.</p></div>
+        <div class="card"><h3>Safe by design</h3><p>Status tracking (pending → processing → posted) prevents duplicate uploads. Each platform is handled independently.</p></div>
+        <div class="card"><h3>Captions from one source</h3><p>Captions are built from the video's title and description, so the same message is used consistently across platforms.</p></div>
+        <div class="card"><h3>Your accounts only</h3><p>The tool posts solely to the owner's own connected accounts. There are no public end users and no third-party content.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">From a row in a spreadsheet to a published post.</p>
+      <ol class="steps">
+        <li><h3>Add a video to the schedule</h3><p>The creator stores a video in their own Google Drive and adds a row to the Google Sheet with the title, description and publish time.</p></li>
+        <li><h3>Connect the account</h3><p>The creator authorizes the tool to their own social account using the platform's official login (for TikTok, via TikTok Login Kit). Access can be revoked at any time.</p></li>
+        <li><h3>The tool runs on schedule</h3><p>At each scheduled time the tool downloads the video and uploads it through the platform's official publishing API.</p></li>
+        <li><h3>The post goes live</h3><p>The video is published to the creator's own account and the resulting post URL is written back to the spreadsheet.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="tiktok">
+    <div class="wrap">
+      <h2>TikTok integration</h2>
+      <p class="sub">How SNS Auto Poster uses the TikTok Content Posting API.</p>
+      <div class="note">
+        <p style="margin:0 0 10px;">SNS Auto Poster integrates with TikTok using <strong>TikTok Login Kit</strong> and the <strong>Content Posting API (Direct Post)</strong> so a creator can schedule their own videos to their own TikTok account:</p>
+        <ul style="margin:0; padding-left:1.1em;">
+          <li><strong>Login Kit (<code>user.info.basic</code>)</strong> — the creator signs in with TikTok and authorizes the app; the app reads only their basic profile to confirm the connected account.</li>
+          <li><strong>Content Posting API (<code>video.publish</code>)</strong> — the app uploads the creator's selected video and publishes it directly to their own TikTok account at the scheduled time, honoring the creator's chosen privacy level.</li>
+        </ul>
+        <p style="margin:10px 0 0;">The app only ever posts content the creator supplies, only to the creator's own account, and only when the creator has scheduled it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="platforms">
+    <div class="wrap">
+      <h2>Supported platforms</h2>
+      <p class="sub">Short-form vertical video across the major networks.</p>
+      <table class="platforms">
+        <thead><tr><th>Platform</th><th>Content</th><th>Official API used</th></tr></thead>
+        <tbody>
+          <tr><td>TikTok</td><td>Short video</td><td>Content Posting API (Direct Post)</td></tr>
+          <tr><td>YouTube</td><td>Shorts &amp; standard video</td><td>YouTube Data API</td></tr>
+          <tr><td>Facebook</td><td>Reels</td><td>Facebook Graph API</td></tr>
+          <tr><td>Instagram</td><td>Reels</td><td>Instagram Graph API</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact &amp; support</h2>
+      <p class="sub">Questions about the app or this integration?</p>
+      <p>Email: <a href="mailto:laf.kanri@gmail.com">laf.kanri@gmail.com</a></p>
+      <p>Please review our <a href="./terms.html">Terms of Service</a> and <a href="./privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 SNS Auto Poster. A personal scheduling tool for a creator's own social accounts.</div>
+      <div>
+        <a href="./terms.html">Terms</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="mailto:laf.kanri@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
