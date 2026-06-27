@@ -30,11 +30,12 @@
   <ul>
     <li><strong>TikTok:</strong> Using the Content Posting API (scope <code>video.publish</code>), the App publishes the Operator's own video files to the Operator's own TikTok profile. If the Login Kit scope (<code>user.info.basic</code>) is granted, it is used only to identify the Operator's own account during authorization.</li>
     <li><strong>Google (Sheets / Drive / YouTube):</strong> The App reads a posting schedule from the Operator's own Google Sheet, reads the Operator's own video and thumbnail files from the Operator's own Google Drive, and uploads videos to the Operator's own YouTube channel.</li>
+    <li><strong>Threads (Meta):</strong> Using the Threads API with permissions the Operator grants (<code>threads_basic</code>, <code>threads_content_publish</code>, <code>threads_manage_replies</code>, <code>threads_keyword_search</code>), the App accesses the Operator's own Threads profile ID and username and an access token, and—via keyword search—publicly available Threads posts that match keywords or hashtags the Operator chooses. For each public post this includes the post ID, text, permalink, author username, and timestamp. This data is used only to let the Operator review candidate posts and publish replies the Operator manually writes and approves.</li>
     <li><strong>Authentication tokens:</strong> OAuth refresh tokens for the connected accounts are stored locally in the Operator's own environment configuration and are used only to authenticate API requests.</li>
   </ul>
 
   <h2>3. How Data Is Used</h2>
-  <p>Accessed data is used exclusively to schedule and publish the Operator's own content to the Operator's own social media accounts. The App does not use the data for any other purpose.</p>
+  <p>Accessed data is used exclusively to schedule and publish the Operator's own content to the Operator's own social media accounts, and—for Threads—to let the Operator review publicly available posts and publish replies that the Operator manually writes and approves. The App does not use the data for any other purpose.</p>
 
   <h2>4. Data Sharing</h2>
   <p>The App does not sell, share, or transmit any accessed data to third parties. Data is sent only to the official APIs of the relevant platforms (Google, TikTok) for the sole purpose of publishing the Operator's own content.</p>
@@ -42,16 +43,19 @@
   <h2>5. Data Storage and Retention</h2>
   <p>The App runs locally and does not operate a public server or database. Downloaded video files are stored temporarily and deleted after each posting run. Access tokens are retained locally only for as long as needed to operate the App and can be revoked by the Operator at any time through the respective platform's account settings.</p>
 
-  <h2>6. Third-Party Services</h2>
-  <p>The App relies on services provided by Google and TikTok. Their handling of data is governed by their own privacy policies.</p>
+  <h2>6. Threads Keyword Search and Public Post Data</h2>
+  <p>The <code>threads_keyword_search</code> permission is used only to gather candidate public posts for the Operator to review and reply to. Publicly available posts retrieved via keyword search are stored solely in the Operator's private Google Spreadsheet alongside the Operator's reply records, are retained only as long as needed for the Operator's reply workflow, and can be deleted by the Operator at any time. This public post data is never sold, shared, redistributed, or used for profiling, advertising, or any purpose other than enabling the Operator's manual reply workflow. Access tokens are stored in the Operator's private Google Apps Script properties.</p>
 
-  <h2>7. Children's Privacy</h2>
+  <h2>7. Third-Party Services</h2>
+  <p>The App relies on services provided by Google, TikTok, and Meta (Threads). Their handling of data is governed by their own privacy policies.</p>
+
+  <h2>8. Children's Privacy</h2>
   <p>The App is a personal tool not directed to children and does not knowingly collect data from children.</p>
 
-  <h2>8. Changes</h2>
+  <h2>9. Changes</h2>
   <p>This Privacy Policy may be updated from time to time. Any updates will be posted on this page.</p>
 
-  <h2>9. Contact</h2>
+  <h2>10. Contact</h2>
   <p>For questions regarding this policy, contact: <a href="mailto:laf.kanri@gmail.com">laf.kanri@gmail.com</a></p>
 
   <p><a href="./index.html">&larr; Back</a></p>
